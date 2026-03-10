@@ -1,0 +1,85 @@
+========================================================================
+       SOUNDWAVE - AI-POWERED E-COMMERCE PLATFORM
+========================================================================
+
+1. PROJECT OVERVIEW
+-------------------
+SoundWave is a premium electronics e-commerce website that integrates an 
+intelligent AI Assistant (Chatbot) to help users find products, compare 
+specifications, and get recommendations. 
+
+Tech Stack:
+- Frontend: React.js, Vite, TailwindCSS (Shadcn UI)
+- Backend: Node.js, Express.js
+- Database: Local JSON-based Persistent Storage (Flat-file structure)
+- Security: JWT Authentication, Bcrypt Password Hashing, Rate Limiting
+
+2. CORE FEATURES
+----------------
+- AI Smart Assistant: Intent-based product search and fuzzy matching.
+- User Management: Full Auth flow (Register/Login).
+- Shopping Flow: Cart, Checkout, and Order History.
+- Design: High-end dark theme with glassmorphism and smooth animations.
+
+3. IMPORTANT FOLDERS & THEIR ROLES
+----------------------------------
+
+📂 /src (FRONTEND)
+------------------
+This is where the user interface and app logic live.
+- /components: Reusable pieces of the UI.
+    * ChatbotWidget.tsx: The floating AI assistant interface.
+    * ProductCard.tsx: The visual card showing price, image, and ratings.
+    * Navbar.tsx: Handles navigation and shows user login status.
+- /pages: Full page views like Home, Products, Checkout, and Order History.
+- /context: Shared global data. 
+    * AuthContext.tsx: Tracks if a user is logged in across the whole site.
+- /store: State management.
+    * cartStore.ts: Manages adding/removing items from the cart.
+- /data:
+    * products.json: The "Master Catalog" containing all product specs.
+
+📂 /backend (SERVER)
+--------------------
+This provides the "brain" and the database for the application.
+- /data: THE DATABASE
+    * users.json: Stores all registered profiles (Passwords are hashed).
+    * orders.json: Stores every order placed by users.
+- /models: Data Access Logic.
+    * User.js & Order.js: Scripts that talk to the JSON files to read/write data.
+- /routes: API Endpoints.
+    * auth.js: Handles login and registration requests.
+    * orderRoutes.js: Handles placing orders and fetching history.
+    * api/chat: The custom endpoint inside index.cjs that runs the AI.
+- /utils: Helper Functions.
+    * reasoningEngine.cjs: The logic that decides how the bot answers.
+    * stringUtils.cjs: Uses Levenshtein distance for fuzzy search typo tolerance.
+- index.cjs: The main entry point that starts the server on Port 5000.
+
+4. HOW THE SYSTEMS WORK
+-----------------------
+
+A. THE AI CHATBOT FLOW
+1. User sends a message -> Frontend sends it to /api/chat.
+2. The bot uses "NormalizeQuery" to clean the text and "ClassifyIntent" to figure 
+   out if the user wants a price, a recommendation, or a comparison.
+3. It searches the "Knowledge Base" (loaded from products.json).
+4. If the user makes a typo, the "Levenshtein" algorithm finds the closest match.
+5. "ReasoningEngine" generates a human-like reply and attaches product cards.
+
+B. THE CHECKOUT FLOW
+1. User adds items to Cart (State kept in Zustand cartStore).
+2. Checkout page fetches user address and calculates 18% GST.
+3. On payment, a request is sent to /api/orders.
+4. The server saves the order to data/orders.json and assigns a unique Order ID.
+5. User is redirected to Order History to see their new transaction.
+
+C. THE DATABASE SYSTEM
+Instead of a heavy database like MongoDB, this project uses a "Flat-file JSON" 
+approach. This means all data is stored in simple text files inside backend/data/. 
+This makes the project portable and extremely fast to run locally without 
+setting up external servers.
+
+========================================================================
+Generated on: 2026-02-21
+========================================================================

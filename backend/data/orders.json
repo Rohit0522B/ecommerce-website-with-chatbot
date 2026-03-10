@@ -66,5 +66,54 @@
       "update_time": "2026-02-21T10:05:04.976Z",
       "email_address": "simulation@sonic-hub.com"
     }
+  },
+  {
+    "orderItems": [
+      {
+        "name": "Rockerz Bass Pro",
+        "qty": 1,
+        "image": "/placeholder.svg",
+        "price": 3999,
+        "product": 11
+      },
+      {
+        "name": "Rockerz Studio",
+        "qty": 1,
+        "image": "/placeholder.svg",
+        "price": 6999,
+        "product": 12
+      },
+      {
+        "name": "AirBass Pro 360",
+        "qty": 1,
+        "image": "/placeholder.svg",
+        "price": 2999,
+        "product": 1
+      }
+    ],
+    "user": "mlpq6tym6gc8il",
+    "shippingAddress": {
+      "address": "Nirmala Bhawan Clement Town near ganpat shop",
+      "city": "Dehradun",
+      "postalCode": "248002",
+      "country": "India"
+    },
+    "paymentMethod": "Card",
+    "itemsPrice": 13997,
+    "taxPrice": 2519,
+    "shippingPrice": 0,
+    "totalPrice": 16516,
+    "id": "ORD_mlxpelt5wi6",
+    "_id": "ORD_mlxpelt5wi6",
+    "isPaid": true,
+    "isDelivered": false,
+    "createdAt": "2026-02-22T12:08:14.825Z",
+    "paidAt": "2026-02-22T12:08:14.861Z",
+    "paymentResult": {
+      "id": "SIM_1771762094849",
+      "status": "COMPLETED",
+      "update_time": "2026-02-22T12:08:14.849Z",
+      "email_address": "simulation@sonic-hub.com"
+    }
   }
 ]
